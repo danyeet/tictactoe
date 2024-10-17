@@ -10,6 +10,8 @@ def print_board(board):
     # print(board[2][0] + "|"+ board[2][1] + "|"+ board[2][2])
     # print()
 
+def isGameOver():
+    print()
 
 USER_MOVE = "X"
 CPU_MOVE = "O"
