@@ -6,18 +6,16 @@ def print_board(board):
     print(board[2][0] + "|"+ board[2][1] + "|"+ board[2][2])
     print()
 
-board = [["O","X","O"],
-         ["X","O",""],
-         ["O","X","X"]]
+board = [["","",""],
+         ["","",""],
+         ["","",""]]
 
-
+counter_moves = 0
 print_board(board)
 # Game logic
-for i in range(5):
+while(True):
     usr_input_col = int(input("Enter column number between 1 and 3:")) - 1
     usr_input_row = int(input("Enter row number between 1 and 3:")) - 1
-    print(usr_input_col > 2 or usr_input_col < 0)
-    print(usr_input_row > 2 or usr_input_row < 0)
     while(True):
         if usr_input_col > 2 or usr_input_col < 0:
             usr_input_col = int(input("Please enter a valid column number between 1 and 3:")) - 1
@@ -30,7 +28,7 @@ for i in range(5):
         else:
             break
     board[usr_input_row][usr_input_col] = "X"
-
+    counter_moves += 1
     
     # Column wins
     if board[0][0] == "X" and board[1][0] == "X" and board[2][0] == "X":
@@ -67,11 +65,12 @@ for i in range(5):
         print("Congratulations, you won!")
         print_board(board)
         break
-    # Tie
-    else:
-        print("It's a tie.")
+    # Tie condition
+    if counter_moves == 9:
+        print("It's a tie")
         print_board(board)
-    while(True):
+        break
+    while(True):    
         random_col = random.randint(0,2)
         random_row = random.randint(0,2)
         if board[random_row][random_col] != "":
@@ -79,6 +78,7 @@ for i in range(5):
             random_row = random.randint(0,2)
         else:
             board[random_row][random_col] = "O"
+            counter_moves += 1
             break
     if board[0][0] == "O" and board[1][0] == "O" and board[2][0] == "O":
         print("You lost!")
