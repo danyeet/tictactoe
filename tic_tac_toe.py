@@ -21,7 +21,10 @@ def isGameOver(board):
                 else:
                     print("New func test - USER WIN column")
                     return USER_MOVE
-        
+        for i in range(2):
+            diag1 = []
+            diag2 = []
+
         if EMPTY_PLACE in row:
             continue
         elif CPU_MOVE in row:
@@ -116,22 +119,4 @@ if __name__ == "__main__":
                 board[random_row][random_col] = CPU_MOVE
                 counter_moves += 1
                 break
-
-        # # Diagonal wins
-        # elif (
-        #     board[0][0] == CPU_MOVE
-        #     and board[1][1] == CPU_MOVE
-        #     and board[2][2] == CPU_MOVE
-        # ):
-        #     print("You lost!")
-        #     print_board(board)
-        #     break
-        # elif (
-        #     board[2][0] == CPU_MOVE
-        #     and board[1][1] == CPU_MOVE
-        #     and board[0][2] == CPU_MOVE
-        # ):
-        #     print("You lost!")
-        #     print_board(board)
-        #     break
         print_board(board)
