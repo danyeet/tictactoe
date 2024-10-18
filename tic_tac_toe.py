@@ -1,6 +1,5 @@
 import random
 
-
 # Define the board and print board method
 def print_board(board):
     for row in board:
@@ -13,16 +12,41 @@ def print_board(board):
 
 def isGameOver(board):
     for row in board:
-        if CPU_MOVE in row:
+        for i in range(2):
+            column = [row[i] for row in board]
+            if EMPTY_PLACE in column:
+                continue
+            elif USER_MOVE in column:
+                if CPU_MOVE in column:
+                    if USER_MOVE in row:
+                        continue
+                    else:
+                        print("CPU Win - new func. - column")
+                        return CPU_MOVE
+                else:
+                    print("New func test - USER WIN column")
+                    return USER_MOVE
+                # if i == EMPTY_PLACE:
+                #     continue
+                # if i == USER_MOVE:
+                #     if i + 1 == CPU_MOVE or i + 2 == CPU_MOVE:
+        if EMPTY_PLACE in row:
             continue
+        elif CPU_MOVE in row:
+            if USER_MOVE in row:
+                continue
+            else:
+                print("CPU Win - new func. - row")
+                return CPU_MOVE
         else:
-            print("You win!")
+            print("New func works - user win. - row")
+            return USER_MOVE
 
 
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", ""], ["", "", ""], ["", "", ""]]
+board = [["", "", USER_MOVE], [USER_MOVE, "", ""], ["", "", ""]]
 
 if __name__ == "__main__":
     counter_moves = 0
@@ -52,6 +76,9 @@ if __name__ == "__main__":
         board[usr_input_row][usr_input_col] = USER_MOVE
         counter_moves += 1
 
+        # New func test
+        # isGameOver(board)
+        winner = isGameOver(board)
         # Column wins
         if (
             board[0][0] == USER_MOVE
@@ -78,6 +105,7 @@ if __name__ == "__main__":
             print_board(board)
             break
         # Row wins
+
         elif (
             board[0][0] == USER_MOVE
             and board[0][1] == USER_MOVE
@@ -124,16 +152,17 @@ if __name__ == "__main__":
             print("It's a tie")
             print_board(board)
             break
-        while 1:
-            random_col = random.randint(0, 2)
-            random_row = random.randint(0, 2)
-            if board[random_row][random_col] != EMPTY_PLACE:
-                random_col = random.randint(0, 2)
-                random_row = random.randint(0, 2)
-            else:
-                board[random_row][random_col] = CPU_MOVE
-                counter_moves += 1
-                break
+        # while 1:
+        #     random_col = random.randint(0, 2)
+        #     random_row = random.randint(0, 2)
+        #     if board[random_row][random_col] != EMPTY_PLACE:
+        #         random_col = random.randint(0, 2)
+        #         random_row = random.randint(0, 2)
+        #     else:
+        #         board[random_row][random_col] = CPU_MOVE
+        #         counter_moves += 1
+        #         break
+
         if (
             board[0][0] == CPU_MOVE
             and board[1][0] == CPU_MOVE
