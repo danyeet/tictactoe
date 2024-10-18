@@ -4,11 +4,6 @@ import random
 def print_board(board):
     for row in board:
         print(f"{row[0]} | {row[1]} | {row[2]} ")
-    # print(board[0][0] + "|"+ board[0][1] + "|"+ board[0][2])
-    # print(board[1][0] + "|"+ board[1][1] + "|"+ board[1][2])
-    # print(board[2][0] + "|"+ board[2][1] + "|"+ board[2][2])
-    # print()
-
 
 def isGameOver(board):
     for row in board:
@@ -26,10 +21,7 @@ def isGameOver(board):
                 else:
                     print("New func test - USER WIN column")
                     return USER_MOVE
-                # if i == EMPTY_PLACE:
-                #     continue
-                # if i == USER_MOVE:
-                #     if i + 1 == CPU_MOVE or i + 2 == CPU_MOVE:
+        
         if EMPTY_PLACE in row:
             continue
         elif CPU_MOVE in row:
@@ -46,7 +38,7 @@ def isGameOver(board):
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", USER_MOVE], [USER_MOVE, "", ""], ["", "", ""]]
+board = [["", "", ""], ["", "", ""], ["", "", ""]]
 
 if __name__ == "__main__":
     counter_moves = 0
@@ -79,69 +71,19 @@ if __name__ == "__main__":
         # New func test
         # isGameOver(board)
         winner = isGameOver(board)
-        match winner:
-            case "X":
-                print("Congratulations, you won!")
-                print_board(board)
-                break
-            case "O":
-                print("You lost!")
-                print_board(board)
-                break
-            case _:
-                print("It's a tie")
-                break
+        if winner == USER_MOVE:
+            print("Congratulations, you won!!")
+            print_board(board)
+            break
+        elif winner == CPU_MOVE:
+            print("You lost!")
+            print_board(board)
+            break
+        elif winner == EMPTY_PLACE:
+            print("It's a tie")
+            print_board(board)
+            break
         # Column wins
-        # if (
-        #     board[0][0] == USER_MOVE
-        #     and board[1][0] == USER_MOVE
-        #     and board[2][0] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
-        # elif (
-        #     board[0][1] == USER_MOVE
-        #     and board[1][1] == USER_MOVE
-        #     and board[2][1] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
-        # elif (
-        #     board[0][2] == USER_MOVE
-        #     and board[1][2] == USER_MOVE
-        #     and board[2][2] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
-        # Row wins
-
-        # elif (
-        #     board[0][0] == USER_MOVE
-        #     and board[0][1] == USER_MOVE
-        #     and board[0][2] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
-        # elif (
-        #     board[1][0] == USER_MOVE
-        #     and board[1][1] == USER_MOVE
-        #     and board[1][2] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
-        # elif (
-        #     board[2][0] == USER_MOVE
-        #     and board[2][1] == USER_MOVE
-        #     and board[2][2] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
         # Diagonal wins
         if (
             board[0][0] == USER_MOVE
@@ -175,70 +117,21 @@ if __name__ == "__main__":
         #         counter_moves += 1
         #         break
 
-        if (
-            board[0][0] == CPU_MOVE
-            and board[1][0] == CPU_MOVE
-            and board[2][0] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        elif (
-            board[0][1] == CPU_MOVE
-            and board[1][1] == CPU_MOVE
-            and board[2][1] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        elif (
-            board[0][2] == CPU_MOVE
-            and board[1][2] == CPU_MOVE
-            and board[2][2] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        # Row wins
-        elif (
-            board[0][0] == CPU_MOVE
-            and board[0][1] == CPU_MOVE
-            and board[0][2] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        elif (
-            board[1][0] == CPU_MOVE
-            and board[1][1] == CPU_MOVE
-            and board[1][2] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        elif (
-            board[2][0] == CPU_MOVE
-            and board[2][1] == CPU_MOVE
-            and board[2][2] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        # Diagonal wins
-        elif (
-            board[0][0] == CPU_MOVE
-            and board[1][1] == CPU_MOVE
-            and board[2][2] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
-        elif (
-            board[2][0] == CPU_MOVE
-            and board[1][1] == CPU_MOVE
-            and board[0][2] == CPU_MOVE
-        ):
-            print("You lost!")
-            print_board(board)
-            break
+        # # Diagonal wins
+        # elif (
+        #     board[0][0] == CPU_MOVE
+        #     and board[1][1] == CPU_MOVE
+        #     and board[2][2] == CPU_MOVE
+        # ):
+        #     print("You lost!")
+        #     print_board(board)
+        #     break
+        # elif (
+        #     board[2][0] == CPU_MOVE
+        #     and board[1][1] == CPU_MOVE
+        #     and board[0][2] == CPU_MOVE
+        # ):
+        #     print("You lost!")
+        #     print_board(board)
+        #     break
         print_board(board)
