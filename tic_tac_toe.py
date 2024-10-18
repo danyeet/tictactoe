@@ -79,59 +79,71 @@ if __name__ == "__main__":
         # New func test
         # isGameOver(board)
         winner = isGameOver(board)
+        match winner:
+            case "X":
+                print("Congratulations, you won!")
+                print_board(board)
+                break
+            case "O":
+                print("You lost!")
+                print_board(board)
+                break
+            case _:
+                print("It's a tie")
+                break
         # Column wins
-        if (
-            board[0][0] == USER_MOVE
-            and board[1][0] == USER_MOVE
-            and board[2][0] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
-        elif (
-            board[0][1] == USER_MOVE
-            and board[1][1] == USER_MOVE
-            and board[2][1] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
-        elif (
-            board[0][2] == USER_MOVE
-            and board[1][2] == USER_MOVE
-            and board[2][2] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
+        # if (
+        #     board[0][0] == USER_MOVE
+        #     and board[1][0] == USER_MOVE
+        #     and board[2][0] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
+        # elif (
+        #     board[0][1] == USER_MOVE
+        #     and board[1][1] == USER_MOVE
+        #     and board[2][1] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
+        # elif (
+        #     board[0][2] == USER_MOVE
+        #     and board[1][2] == USER_MOVE
+        #     and board[2][2] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
         # Row wins
 
-        elif (
-            board[0][0] == USER_MOVE
-            and board[0][1] == USER_MOVE
-            and board[0][2] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
-        elif (
-            board[1][0] == USER_MOVE
-            and board[1][1] == USER_MOVE
-            and board[1][2] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
-        elif (
-            board[2][0] == USER_MOVE
-            and board[2][1] == USER_MOVE
-            and board[2][2] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
+        # elif (
+        #     board[0][0] == USER_MOVE
+        #     and board[0][1] == USER_MOVE
+        #     and board[0][2] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
+        # elif (
+        #     board[1][0] == USER_MOVE
+        #     and board[1][1] == USER_MOVE
+        #     and board[1][2] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
+        # elif (
+        #     board[2][0] == USER_MOVE
+        #     and board[2][1] == USER_MOVE
+        #     and board[2][2] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
         # Diagonal wins
-        elif (
+        if (
             board[0][0] == USER_MOVE
             and board[1][1] == USER_MOVE
             and board[2][2] == USER_MOVE
@@ -148,10 +160,10 @@ if __name__ == "__main__":
             print_board(board)
             break
         # Tie condition
-        if counter_moves == 9:
-            print("It's a tie")
-            print_board(board)
-            break
+        # if counter_moves == 9:
+        #     print("It's a tie")
+        #     print_board(board)
+        #     break
         # while 1:
         #     random_col = random.randint(0, 2)
         #     random_row = random.randint(0, 2)
