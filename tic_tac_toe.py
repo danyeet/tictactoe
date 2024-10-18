@@ -13,7 +13,7 @@ def isGameOver(board):
                 continue
             elif USER_MOVE in column:
                 if CPU_MOVE in column:
-                    if USER_MOVE in row:
+                    if USER_MOVE in column:
                         continue
                     else:
                         print("CPU Win - new func. - column")
@@ -38,7 +38,7 @@ def isGameOver(board):
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", ""], ["", "", ""], ["", "", ""]]
+board = [["", "", ""], [CPU_MOVE, "","" ], [CPU_MOVE, "", ""]]
 
 if __name__ == "__main__":
     counter_moves = 0
@@ -106,16 +106,16 @@ if __name__ == "__main__":
         #     print("It's a tie")
         #     print_board(board)
         #     break
-        # while 1:
-        #     random_col = random.randint(0, 2)
-        #     random_row = random.randint(0, 2)
-        #     if board[random_row][random_col] != EMPTY_PLACE:
-        #         random_col = random.randint(0, 2)
-        #         random_row = random.randint(0, 2)
-        #     else:
-        #         board[random_row][random_col] = CPU_MOVE
-        #         counter_moves += 1
-        #         break
+        while 1:
+            random_col = random.randint(0, 2)
+            random_row = random.randint(0, 2)
+            if board[random_row][random_col] != EMPTY_PLACE:
+                random_col = random.randint(0, 2)
+                random_row = random.randint(0, 2)
+            else:
+                board[random_row][random_col] = CPU_MOVE
+                counter_moves += 1
+                break
 
         # # Diagonal wins
         # elif (
