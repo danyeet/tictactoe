@@ -5,6 +5,7 @@ def print_board(board):
     for row in board:
         print(f"{row[0]} | {row[1]} | {row[2]} ")
 
+
 def isGameOver(board):
     for row in board:
         for i in range(2):
@@ -21,9 +22,10 @@ def isGameOver(board):
                 else:
                     print("New func test - USER WIN column")
                     return USER_MOVE
-        for i in range(2):
-            diag1 = []
-            diag2 = []
+        # diag1 = []
+        # diag2 = []
+        # for i in range(2):
+        #     diag1.append(row[i])
 
         if EMPTY_PLACE in row:
             continue
@@ -41,7 +43,7 @@ def isGameOver(board):
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", ""], [CPU_MOVE, "","" ], [CPU_MOVE, "", ""]]
+board = [["", "", ""], [CPU_MOVE, "", ""], [CPU_MOVE, "", ""]]
 
 if __name__ == "__main__":
     counter_moves = 0
