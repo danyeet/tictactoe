@@ -1,15 +1,21 @@
 import random
 
+
 # Define the board and print board method
 def print_board(board):
     for row in board:
         print(f"{row[0]} | {row[1]} | {row[2]} ")
+    print(f"{diagonal1}")
+    print(f"{diagonal2}")
 
 
 def isGameOver(board):
     for row in board:
-        for i in range(2):
+        for i in range(count):
             column = [row[i] for row in board]
+            diagonal1[i] = board[i][i]
+            diagonal2[i] = board[i][count-i-1]
+            #diagonal = 
             if EMPTY_PLACE in column:
                 continue
             elif USER_MOVE in column:
@@ -22,11 +28,32 @@ def isGameOver(board):
                 else:
                     print("New func test - USER WIN column")
                     return USER_MOVE
-        # diag1 = []
-        # diag2 = []
-        # for i in range(2):
-        #     diag1.append(row[i])
-
+        if EMPTY_PLACE in diagonal1:
+             print("no diag1 win")
+        elif USER_MOVE in diagonal1:
+            if CPU_MOVE in diagonal1:
+                pass
+            else:
+                print("New func test - diag1 win user")
+                return USER_MOVE
+        elif CPU_MOVE in diagonal1:
+            if USER_MOVE in diagonal1:
+                pass
+            else:
+                print("CPU Win - new func. - diag1")
+                return CPU_MOVE
+        if EMPTY_PLACE in diagonal2:
+             print("no diag2 win")
+        elif USER_MOVE in diagonal2:
+            if CPU_MOVE in diagonal2:
+                if USER_MOVE in diagonal2:
+                    pass
+                else:
+                    print("CPU Win - new func. - diag2")
+                    return CPU_MOVE
+            else:
+                print("New func test - diag2 win user")
+                return USER_MOVE
         if EMPTY_PLACE in row:
             continue
         elif CPU_MOVE in row:
@@ -43,8 +70,10 @@ def isGameOver(board):
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", ""], [CPU_MOVE, "", ""], [CPU_MOVE, "", ""]]
-
+board = [["", "", CPU_MOVE], ["", "", ""], [CPU_MOVE, "", ""]]
+diagonal1 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
+diagonal2 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
+count = len(board)
 if __name__ == "__main__":
     counter_moves = 0
     print_board(board)
@@ -75,6 +104,16 @@ if __name__ == "__main__":
 
         # New func test
         # isGameOver(board)
+        while 1:
+            random_col = random.randint(0, 2)
+            random_row = random.randint(0, 2)
+            if board[random_row][random_col] != EMPTY_PLACE:
+                random_col = random.randint(0, 2)
+                random_row = random.randint(0, 2)
+            else:
+                board[random_row][random_col] = CPU_MOVE
+                counter_moves += 1
+                break 
         winner = isGameOver(board)
         if winner == USER_MOVE:
             print("Congratulations, you won!!")
@@ -90,35 +129,25 @@ if __name__ == "__main__":
             break
         # Column wins
         # Diagonal wins
-        if (
-            board[0][0] == USER_MOVE
-            and board[1][1] == USER_MOVE
-            and board[2][2] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
-        elif (
-            board[2][0] == USER_MOVE
-            and board[1][1] == USER_MOVE
-            and board[0][2] == USER_MOVE
-        ):
-            print("Congratulations, you won!")
-            print_board(board)
-            break
+        # if (
+        #     board[0][0] == USER_MOVE
+        #     and board[1][1] == USER_MOVE
+        #     and board[2][2] == USER_MOVE
+        # ):
+            # print("Congratulations, you won!")
+            # print_board(board)
+            # break
+        # elif (
+        #     board[2][0] == USER_MOVE
+        #     and board[1][1] == USER_MOVE
+        #     and board[0][2] == USER_MOVE
+        # ):
+        #     print("Congratulations, you won!")
+        #     print_board(board)
+        #     break
         # Tie condition
         # if counter_moves == 9:
         #     print("It's a tie")
         #     print_board(board)
         #     break
-        while 1:
-            random_col = random.randint(0, 2)
-            random_row = random.randint(0, 2)
-            if board[random_row][random_col] != EMPTY_PLACE:
-                random_col = random.randint(0, 2)
-                random_row = random.randint(0, 2)
-            else:
-                board[random_row][random_col] = CPU_MOVE
-                counter_moves += 1
-                break
         print_board(board)
