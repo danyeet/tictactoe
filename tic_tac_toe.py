@@ -71,10 +71,10 @@ def isGameOver(board):
         # else:
         #     print("Tie!")
         #     return EMPTY_PLACE
-    # if EMPTY_PLACE not in board:
-    #     if not winner:
-    #         print("Tie!")
-    #         return EMPTY_PLACE
+    if not any(EMPTY_PLACE in row for row in board):
+        if not winner:
+            print("Tie!")
+            return EMPTY_PLACE
         
 
 
@@ -82,7 +82,7 @@ USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
 winner = 0
-board = [[USER_MOVE, CPU_MOVE, USER_MOVE], [USER_MOVE, CPU_MOVE, CPU_MOVE], [EMPTY_PLACE, USER_MOVE, EMPTY_PLACE]]
+board = [[USER_MOVE, "", ""], [EMPTY_PLACE, CPU_MOVE, EMPTY_PLACE], [EMPTY_PLACE, USER_MOVE, EMPTY_PLACE]]
 diagonal1 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
 diagonal2 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
 count = len(board)
