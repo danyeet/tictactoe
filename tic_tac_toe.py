@@ -8,7 +8,7 @@ def print_board(board):
     print(f"{diagonal1}")
     print(f"{diagonal2}")
 
-
+# Define the win/lose/tie mechanic
 def isGameOver(board):
     for row in board:
         for i in range(count):
@@ -26,9 +26,6 @@ def isGameOver(board):
             elif CPU_MOVE in column:
                 print("CPU Win - column")
                 return CPU_MOVE
-            # else:
-            #     print("Tie!")
-            #     return EMPTY_PLACE
         if EMPTY_PLACE in diagonal1:
              pass
         elif USER_MOVE in diagonal1:
@@ -68,9 +65,7 @@ def isGameOver(board):
         elif CPU_MOVE in row:
             print("CPU Win - new func. - row")
             return CPU_MOVE
-        # else:
-        #     print("Tie!")
-        #     return EMPTY_PLACE
+
     if not any(EMPTY_PLACE in row for row in board):
         if not winner:
             print("Tie!")
@@ -114,8 +109,6 @@ if __name__ == "__main__":
         board[usr_input_row][usr_input_col] = USER_MOVE
         counter_moves += 1
 
-        # New func test
-        # isGameOver(board)
         while 1:
             random_col = random.randint(0, 2)
             random_row = random.randint(0, 2)
@@ -139,27 +132,4 @@ if __name__ == "__main__":
             print("It's a tie")
             print_board(board)
             break
-        # Column wins
-        # Diagonal wins
-        # if (
-        #     board[0][0] == USER_MOVE
-        #     and board[1][1] == USER_MOVE
-        #     and board[2][2] == USER_MOVE
-        # ):
-            # print("Congratulations, you won!")
-            # print_board(board)
-            # break
-        # elif (
-        #     board[2][0] == USER_MOVE
-        #     and board[1][1] == USER_MOVE
-        #     and board[0][2] == USER_MOVE
-        # ):
-        #     print("Congratulations, you won!")
-        #     print_board(board)
-        #     break
-        # Tie condition
-        # if counter_moves == 9:
-        #     print("It's a tie")
-        #     print_board(board)
-        #     break
         print_board(board)
