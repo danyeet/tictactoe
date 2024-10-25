@@ -19,16 +19,17 @@ def isGameOver(board):
                 continue
             elif USER_MOVE in column:
                 if CPU_MOVE in column:
-                    if USER_MOVE in column:
-                        continue
-                    else:
-                        print("CPU Win - new func. - column")
-                        return CPU_MOVE
+                    pass
                 else:
-                    print("New func test - USER WIN column")
-                    return USER_MOVE
+                    print("USER WIN column")
+            elif CPU_MOVE in column:
+                print("CPU Win - column")
+                return CPU_MOVE
+            else:
+                print("Tie!")
+                return EMPTY_PLACE
         if EMPTY_PLACE in diagonal1:
-             print("no diag1 win")
+             pass
         elif USER_MOVE in diagonal1:
             if CPU_MOVE in diagonal1:
                 pass
@@ -56,22 +57,31 @@ def isGameOver(board):
                 print("CPU Win - new func. - diag2")
                 return CPU_MOVE
         if EMPTY_PLACE in row:
-            continue
-        elif CPU_MOVE in row:
-            if USER_MOVE in row:
-                continue
+            pass
+        elif USER_MOVE in row:
+            if CPU_MOVE in row:
+                pass
             else:
-                print("CPU Win - new func. - row")
-                return CPU_MOVE
+                print("New func works - user win. - row")
+                return USER_MOVE
+        elif CPU_MOVE in row:
+            print("CPU Win - new func. - row")
+            return CPU_MOVE
         else:
-            print("New func works - user win. - row")
-            return USER_MOVE
+            print("Tie!")
+            return EMPTY_PLACE
+    # if EMPTY_PLACE not in board:
+    #     if not winner:
+    #         print("Tie!")
+    #         return EMPTY_PLACE
+        
 
 
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", CPU_MOVE], ["", CPU_MOVE, ""], [CPU_MOVE, "", ""]]
+winner = 0
+board = [[USER_MOVE, CPU_MOVE, USER_MOVE], [USER_MOVE, CPU_MOVE, CPU_MOVE], [EMPTY_PLACE, USER_MOVE, EMPTY_PLACE]]
 diagonal1 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
 diagonal2 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
 count = len(board)
@@ -117,7 +127,7 @@ if __name__ == "__main__":
                 break 
         winner = isGameOver(board)
         if winner == USER_MOVE:
-            print("Congratulations, you won!!")
+            print("Congratulations, you win!")
             print_board(board)
             break
         elif winner == CPU_MOVE:
