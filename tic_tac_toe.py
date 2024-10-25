@@ -8,13 +8,14 @@ def print_board(board):
     print(f"{diagonal1}")
     print(f"{diagonal2}")
 
+
 # Define the win/lose/tie mechanic
 def isGameOver(board):
     for row in board:
         for i in range(count):
             column = [row[i] for row in board]
             diagonal1[i] = board[i][i]
-            diagonal2[i] = board[i][count-i-1]
+            diagonal2[i] = board[i][count - i - 1]
             if EMPTY_PLACE in column:
                 continue
             elif USER_MOVE in column:
@@ -27,7 +28,7 @@ def isGameOver(board):
                 print("CPU Win - column")
                 return CPU_MOVE
         if EMPTY_PLACE in diagonal1:
-             pass
+            pass
         elif USER_MOVE in diagonal1:
             if CPU_MOVE in diagonal1:
                 pass
@@ -41,7 +42,7 @@ def isGameOver(board):
                 print("CPU Win - new func. - diag1")
                 return CPU_MOVE
         if EMPTY_PLACE in diagonal2:
-             print("no diag2 win")
+            print("no diag2 win")
         elif USER_MOVE in diagonal2:
             if CPU_MOVE in diagonal2:
                 pass
@@ -70,16 +71,19 @@ def isGameOver(board):
         if not winner:
             print("Tie!")
             return EMPTY_PLACE
-        
 
 
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
 winner = 0
-board = [[EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE], [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE], [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE]]
-diagonal1 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
-diagonal2 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
+board = [
+    [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE],
+    [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE],
+    [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE],
+]
+diagonal1 = [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE]
+diagonal2 = [EMPTY_PLACE, EMPTY_PLACE, EMPTY_PLACE]
 count = len(board)
 if __name__ == "__main__":
     counter_moves = 0
@@ -118,7 +122,7 @@ if __name__ == "__main__":
             else:
                 board[random_row][random_col] = CPU_MOVE
                 counter_moves += 1
-                break 
+                break
         winner = isGameOver(board)
         if winner == USER_MOVE:
             print("Congratulations, you win!")
