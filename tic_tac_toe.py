@@ -5,8 +5,6 @@ import random
 def print_board(board):
     for row in board:
         print(f"{row[0]} | {row[1]} | {row[2]} ")
-    print(f"{diagonal1}")
-    print(f"{diagonal2}")
 
 
 # Define the win/lose/tie mechanic
