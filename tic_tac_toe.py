@@ -22,12 +22,13 @@ def isGameOver(board):
                     pass
                 else:
                     print("USER WIN column")
+                    return USER_MOVE
             elif CPU_MOVE in column:
                 print("CPU Win - column")
                 return CPU_MOVE
-            else:
-                print("Tie!")
-                return EMPTY_PLACE
+            # else:
+            #     print("Tie!")
+            #     return EMPTY_PLACE
         if EMPTY_PLACE in diagonal1:
              pass
         elif USER_MOVE in diagonal1:
@@ -67,9 +68,9 @@ def isGameOver(board):
         elif CPU_MOVE in row:
             print("CPU Win - new func. - row")
             return CPU_MOVE
-        else:
-            print("Tie!")
-            return EMPTY_PLACE
+        # else:
+        #     print("Tie!")
+        #     return EMPTY_PLACE
     # if EMPTY_PLACE not in board:
     #     if not winner:
     #         print("Tie!")
