@@ -15,7 +15,6 @@ def isGameOver(board):
             column = [row[i] for row in board]
             diagonal1[i] = board[i][i]
             diagonal2[i] = board[i][count-i-1]
-            #diagonal = 
             if EMPTY_PLACE in column:
                 continue
             elif USER_MOVE in column:
@@ -46,14 +45,16 @@ def isGameOver(board):
              print("no diag2 win")
         elif USER_MOVE in diagonal2:
             if CPU_MOVE in diagonal2:
-                if USER_MOVE in diagonal2:
-                    pass
-                else:
-                    print("CPU Win - new func. - diag2")
-                    return CPU_MOVE
+                pass
             else:
                 print("New func test - diag2 win user")
                 return USER_MOVE
+        elif CPU_MOVE in diagonal2:
+            if USER_MOVE in diagonal2:
+                pass
+            else:
+                print("CPU Win - new func. - diag2")
+                return CPU_MOVE
         if EMPTY_PLACE in row:
             continue
         elif CPU_MOVE in row:
@@ -70,7 +71,7 @@ def isGameOver(board):
 USER_MOVE = "X"
 CPU_MOVE = "O"
 EMPTY_PLACE = ""
-board = [["", "", CPU_MOVE], ["", "", ""], [CPU_MOVE, "", ""]]
+board = [["", "", CPU_MOVE], ["", CPU_MOVE, ""], [CPU_MOVE, "", ""]]
 diagonal1 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
 diagonal2 = [EMPTY_PLACE,EMPTY_PLACE,EMPTY_PLACE]
 count = len(board)
