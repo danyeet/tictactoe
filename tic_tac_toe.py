@@ -37,10 +37,10 @@ def isGameOver(board):
             if USER_MOVE in diagonal1:
                 pass
             else:
-                print("CPU Win - new func. - diag1")
+                pass
                 return CPU_MOVE
         if EMPTY_PLACE in diagonal2:
-            print("no diag2 win")
+            pass
         elif USER_MOVE in diagonal2:
             if CPU_MOVE in diagonal2:
                 pass
